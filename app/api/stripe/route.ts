@@ -19,13 +19,15 @@ export async function GET() {
       return new NextResponse("Unauthorized", { status: 401 });
     }
 
+    const email = user.email || undefined;
+
     const stripeSession = await stripe.checkout.sessions.create({
       success_url: settingsUrl,
       // cancel_url: "http://localhost:3000/listings/65cfaefe470524964d2c6f0e",
       payment_method_types: ["card"],
       mode: "payment",
       billing_address_collection: "auto", 
-      customer_email: user.email,
+      customer_email: email,
       line_items: [
         {
           price_data: {
