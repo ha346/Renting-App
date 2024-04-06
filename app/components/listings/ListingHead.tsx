@@ -12,14 +12,16 @@ interface ListingHeadProps {
   title: string;
   locationValue: string;
   imageSrc: string;
+  videoSrc: string;
   id: string;
   currentUser?: SafeUser | null
-}
+} 
 
 const ListingHead: React.FC<ListingHeadProps> = ({
   title,
   locationValue,
   imageSrc,
+  videoSrc,
   id,
   currentUser
 }) => {
@@ -59,6 +61,14 @@ const ListingHead: React.FC<ListingHeadProps> = ({
             currentUser={currentUser}
           />
         </div>
+      </div>
+      <div>
+        <video width="1100" height="250" autoPlay loop controls preload="none">
+          <source
+            src={videoSrc}
+            type="video/mp4"
+          />
+        </video>
       </div>
     </>
    );

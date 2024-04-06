@@ -19,6 +19,7 @@ import CategoryInput from '../inputs/CategoryInput';
 import CountrySelect from "../inputs/CountrySelect";
 import { categories } from '../navbar/Categories';
 import ImageUpload from '../inputs/ImageUpload';
+import VideoUpload from "../inputs/VideoUpload";
 import Input from '../inputs/Input';
 import Heading from '../Heading';
 
@@ -27,8 +28,9 @@ enum STEPS {
   LOCATION = 1,
   INFO = 2,
   IMAGES = 3,
-  DESCRIPTION = 4,
-  PRICE = 5,
+  VIDEOS = 4,
+  DESCRIPTION = 5,
+  PRICE = 6,
 }
 
 const RentModal = () => {
@@ -53,8 +55,9 @@ const RentModal = () => {
       location: null,
       guestCount: 1,
       roomCount: 1,
-      bathroomCount: 1,
+      bathroomCount: 1, 
       imageSrc: '',
+      videoSrc: '',
       price: 1,
       title: '',
       description: '',
@@ -67,6 +70,7 @@ const RentModal = () => {
   const roomCount = watch('roomCount');
   const bathroomCount = watch('bathroomCount');
   const imageSrc = watch('imageSrc');
+  const videoSrc = watch('videoSrc');
 
   const Map = useMemo(() => dynamic(() => import('../Map'), { 
     ssr: false 
@@ -216,6 +220,21 @@ const RentModal = () => {
         <ImageUpload
           onChange={(value) => setCustomValue('imageSrc', value)}
           value={imageSrc}
+        />
+      </div>
+    )
+  }
+
+  if (step === STEPS.VIDEOS) {
+    bodyContent = (
+      <div className="flex flex-col gap-8">
+        <Heading
+          title="Add a video of your place"
+          subtitle="Show guests a video of your place looks like!"
+        />
+        <VideoUpload
+          onChange={(value) => setCustomValue('videoSrc', value)}
+          value={videoSrc}
         />
       </div>
     )

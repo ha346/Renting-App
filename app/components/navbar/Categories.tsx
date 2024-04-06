@@ -119,7 +119,7 @@ const Categories = () => {
           items-center 
           justify-between
           overflow-x-auto
-        "
+        " 
       >
         {categories.map((item) => (
           <CategoryBox 

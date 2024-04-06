@@ -38,7 +38,8 @@ const ListingClient: React.FC<ListingClientProps> = ({
   const loginModal = useLoginModal();
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(true);
-  // const todayDate = new Date(); 
+  // const todayDate = new Date();  
+  console.log("Video Listing: ", listing.videoSrc);
   
   const disabledDates = useMemo(() => {
     let dates: Date[] = [];
@@ -130,6 +131,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
           <ListingHead
             title={listing.title}
             imageSrc={listing.imageSrc}
+            videoSrc={listing.videoSrc}
             locationValue={listing.locationValue}
             id={listing.id}
             currentUser={currentUser}
@@ -171,7 +173,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
               />
             </div>
           </div>
-        </div>
+        </div> 
       </div>
     </Container>
    );
