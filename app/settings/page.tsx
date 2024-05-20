@@ -9,7 +9,7 @@ const PaymentSuccessModal = () => {
   const isMobile = useMediaQuery({ maxWidth: 750 });
 
   const submitHandler = () => {
-    window.location.href = "http://localhost:3000";
+    window.location.href = "https://property-booking.vercel.app";
   };
 
   return (
